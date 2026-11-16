@@ -1,0 +1,122 @@
+#student create
+###
+POST http://127.0.0.1:8000/usercreate
+Content-Type: application/json
+
+{
+    "username":"amal",
+    "email":"amal@gmail.com",
+    "password":"amal@123"
+
+}
+
+# token AUTH
+###
+POST http://127.0.0.1:8000/token
+Content-Type: application/json
+
+{
+    "username":"amal",
+    "password":"amal@123"
+}
+
+
+###
+@token=466671d64485fb34f32fc23998149f9b61b79aab
+
+
+
+#all STUDENT list
+###
+GET http://127.0.0.1:8000/userlist
+
+
+#student Profile adding
+###
+POST http://127.0.0.1:8000/profilecreate
+Content-Type: application/json
+Authorization: Token {{token}}
+
+
+{
+    "name":"amal",
+    "email":"amal@gmail.com",
+    "phone":7474747485,
+    "course":"MERN",
+    "fee":25000,
+    "joining_date":"2026-10-12"
+}
+
+
+# print SINGLE students profile
+
+###
+GET http://127.0.0.1:8000/profilelist/4
+Authorization: Token {{token}}
+
+
+# print all students profile
+
+###
+GET http://127.0.0.1:8000/studentlist
+Authorization: Token {{token}}
+
+
+#update
+profile update put
+
+###
+PUT http://127.0.0.1:8000/studentupdate/4
+Content-Type: application/json
+Authorization: Token {{token}}
+
+
+{
+  "id": 4,
+  "name": "milu",
+  "email": "milu@gmail.com",
+  "phone": "1234567890",
+  "course": "T&D",
+  "fee": "45000.00",
+  "joining_date": "2026-07-20"
+}
+
+
+#profile update pach
+###
+PATCH http://127.0.0.1:8000/studentupdate/4
+Content-Type: application/json
+Authorization: Token {{token}}
+
+{
+  "phone": 2589632563,
+  "course":"Data Analytics"
+}
+
+
+# delete student profile
+###
+DELETE  http://127.0.0.1:8000/studentdelete/3
+Content-Type: application/json
+Authorization:  Token {{token}}
+
+
+#filter======================
+
+###
+GET http://127.0.0.1:8000/studentlist?fee=25000
+Authorization: Token {{token}}
+
+#ordering======================
+
+###
+GET http://127.0.0.1:8000/studentlist?ordering=fee
+Authorization: Token {{token}}
+
+#searching======================
+
+###
+GET http://127.0.0.1:8000/studentlist?search=amal
+Authorization: Token {{token}}
+
+
